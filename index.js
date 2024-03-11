@@ -10,6 +10,7 @@ function newDeck(){
     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
     .then(res => res.json())
     .then(data => {
+        remainingText.textContent = `Remaining cards: ${data.remaining}`
        console.log(data)
          //store the deck_id in a variable
        deckId = data.deck_id
@@ -38,6 +39,11 @@ drawCardBtn.addEventListener('click', function(){
     `
     const winnerText = determineCardWinner(data.cards[0], data.cards[1])
     header.textContent = winnerText
+
+    if(data.remaining === 0){
+        drawCardBtn.disabled = true
+        header.textContent = "Game over!"
+    }
     })
 })
 function determineCardWinner(card1,card2){
@@ -53,6 +59,6 @@ function determineCardWinner(card1,card2){
     } else if (card1ValueIndex < card2ValueIndex) {
         return "Card 2 wins!"
     } else {
-        return "Why tie..We should FIGHT and determine the Winner!🤣"
+        return "it's a tie,neither get the point🤣"
     }
 }
