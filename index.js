@@ -1,10 +1,14 @@
 //setting deck_id to empty string
 let deckId = "";
+let computerScore = 0
+let myScore = 0
 const cardsContainer = document.getElementById("cards")
 const newDeckBtn = document.getElementById("new-deck")
 const drawCardBtn = document.getElementById("draw-cards")
 const header = document.getElementById("header")
 const remainingText = document.getElementById("remaining")
+const computerScoreEl = document.getElementById("computer-score")
+const myScoreEl = document.getElementById("my-score")
 // 1. Create a new deck of cards
 function newDeck(){
     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
@@ -55,10 +59,14 @@ function determineCardWinner(card1,card2){
     console.log("card 2:", card2ValueIndex)
 
     if (card1ValueIndex > card2ValueIndex) {
-        return "Card 1 wins!"
+        computerScore++
+        computerScoreEl.textContent = `Computer score: ${computerScore}`
+        return "Computer Wins!"
     } else if (card1ValueIndex < card2ValueIndex) {
-        return "Card 2 wins!"
+        myScore++
+        myScoreEl.textContent = `My score: ${myScore}`
+        return "You Win!"
     } else {
-        return "it's a tie,neither get the point🤣"
+        return "War!"
     }
 }
