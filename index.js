@@ -20,6 +20,12 @@ document.getElementById('draw-cards').addEventListener('click', function(){
     .then(res => res.json())
     .then(data => {
         console.log(data)
+        //display the cards on the page
+        document.getElementById('cards').innerHTML = `
+        <img src=${data.cards[0].image} class="card" />
+        <img src=${data.cards[1].image} class="card" />
+        
+        `
     })
 })
    
