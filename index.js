@@ -30,6 +30,8 @@ drawCardBtn.addEventListener('click', function(){
     cardsContainer.children[1].innerHTML = `
         <img src=${data.cards[1].image} class="card" />
     `
+    const winnerText = determineCardWinner(data.cards[0], data.cards[1])
+     console.log(winnerText)
     })
 })
 function determineCardWinner(card1,card2){
@@ -39,14 +41,12 @@ function determineCardWinner(card1,card2){
     const card2ValueIndex = valueOptions.indexOf(card2.value)
     console.log("card 1:", card1ValueIndex)
     console.log("card 2:", card2ValueIndex)
-}
 
-const card1Obj = {
-    value: "7"
+    if (card1ValueIndex > card2ValueIndex) {
+        return "Card 1 wins!"
+    } else if (card1ValueIndex < card2ValueIndex) {
+        return "Card 2 wins!"
+    } else {
+        return "Why tie..We should FIGHT and determine the Winner!🤣"
+    }
 }
-const card2Obj = {
-    value: "KING"
-}
-
-determineCardWinner(card1Obj, card2Obj)
-
