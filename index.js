@@ -3,6 +3,7 @@ let deckId = "";
 const cardsContainer = document.getElementById("cards")
 const newDeckBtn = document.getElementById("new-deck")
 const drawCardBtn = document.getElementById("draw-cards")
+const header = document.getElementById("header")
 // 1. Create a new deck of cards
 function newDeck(){
     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
@@ -31,7 +32,7 @@ drawCardBtn.addEventListener('click', function(){
         <img src=${data.cards[1].image} class="card" />
     `
     const winnerText = determineCardWinner(data.cards[0], data.cards[1])
-     console.log(winnerText)
+    header.textContent = winnerText
     })
 })
 function determineCardWinner(card1,card2){
