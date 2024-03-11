@@ -46,7 +46,15 @@ drawCardBtn.addEventListener('click', function(){
 
     if(data.remaining === 0){
         drawCardBtn.disabled = true
-        header.textContent = "Game over!"
+       if(computerScore>myScore){
+           header.textContent = "Computer Wins the game!"
+       }
+       else if(myScore>computerScore){
+        header.textContent= "You Win the game!"
+       }
+       else{
+        header.textContent= "It's a tie game!"
+       }
     }
     })
 })
