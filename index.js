@@ -1,9 +1,13 @@
+//setting deck_id to empty string
+let deckId = "";
 // 1. Create a new deck of cards
-
 function newDeck(){
     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
     .then(res => res.json())
     .then(data => {
+        //store the deck_id in a variable
+        deckId = data.deck_id
+        console.log(deckId)
        console.log(data)
     })
 }
